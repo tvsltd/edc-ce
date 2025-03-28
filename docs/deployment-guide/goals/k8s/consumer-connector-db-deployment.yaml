@@ -28,7 +28,10 @@ spec:
           livenessProbe:
             exec:
               command:
-                - pg_isready -U db-user --dbname=db-name
+                - "pg_isready"
+                - "-U"
+                - "db-user"
+                - "--dbname=db-name"
             failureThreshold: 10
             periodSeconds: 1
             timeoutSeconds: 5
