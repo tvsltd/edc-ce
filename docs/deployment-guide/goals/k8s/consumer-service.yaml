@@ -11,3 +11,4 @@ spec:
       targetPort: 80
   selector:
     io.kompose.service: consumer
+  type: NodePort
