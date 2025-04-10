@@ -16,6 +16,15 @@ spec:
       labels:
         io.kompose.service: provider-connector-db
     spec:
+      initContainers:
+        - name: init-volume
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - mkdir -p /mnt/data/provider-subdir-1 && chown -R 999:999 /mnt/data/provider-subdir-1
+          volumeMounts:
+            - name: pgdata
+              mountPath: /mnt/data
       containers:
         - env:
             - name: POSTGRES_DB
@@ -39,6 +48,7 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: provider-connector-db-data
+              subPath: provider-subdir-1
       restartPolicy: Always
       volumes:
         - name: provider-connector-db-data
