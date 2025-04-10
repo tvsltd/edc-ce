@@ -23,7 +23,7 @@ spec:
           args:
             - mkdir -p /mnt/data/consumer-subdir-1 && chown -R 999:999 /mnt/data/consumer-subdir-1
           volumeMounts:
-            - name: pgdata
+            - name: consumer-connector-db-data
               mountPath: /mnt/data
       containers:
         - env:

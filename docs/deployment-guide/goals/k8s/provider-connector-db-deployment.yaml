@@ -23,7 +23,7 @@ spec:
           args:
             - mkdir -p /mnt/data/provider-subdir-1 && chown -R 999:999 /mnt/data/provider-subdir-1
           volumeMounts:
-            - name: pgdata
+            - name: provider-connector-db-data
               mountPath: /mnt/data
       containers:
         - env:
