@@ -51,7 +51,7 @@ spec:
             - name: sovity.jdbc.password
               value: db-pass
             - name: sovity.jdbc.url
-              value: jdbc:postgresql://provider-connector-db.default.svc.cluster.local:5432/db-name
+              value: jdbc:postgresql://provider-connector-db.master.svc.cluster.local:5432/db-name
             - name: sovity.jdbc.user
               value: db-user
             - name: sovity.logging.kind
