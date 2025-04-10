@@ -11,4 +11,4 @@ spec:
       targetPort: 5432
   selector:
     io.kompose.service: consumer-connector-db
-  type: NodePort
+  type: ClusterIP
