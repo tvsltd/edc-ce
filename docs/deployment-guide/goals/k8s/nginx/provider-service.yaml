@@ -6,8 +6,8 @@ metadata:
   name: provider
 spec:
   ports:
-    - name: "11000"
-      port: 11000
+    - name: "80"
+      port: 80
       targetPort: 80
   selector:
     io.kompose.service: provider

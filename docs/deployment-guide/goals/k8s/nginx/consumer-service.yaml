@@ -6,8 +6,8 @@ metadata:
   name: consumer
 spec:
   ports:
-    - name: "22000"
-      port: 22000
+    - name: "80"
+      port: 80
       targetPort: 80
   selector:
     io.kompose.service: consumer
