@@ -16,6 +16,7 @@ spec:
                 name: provider-ui
                 port:
                   number: 8080
+    # management API
     - host: sovity-provider-api-1.tvsdevops.co.uk
       http:
         paths:
@@ -26,6 +27,7 @@ spec:
                 name: provider-connector
                 port:
                   number: 11002
+    # DSP API
     - host: sovity-provider-api-2.tvsdevops.co.uk
       http:
         paths:

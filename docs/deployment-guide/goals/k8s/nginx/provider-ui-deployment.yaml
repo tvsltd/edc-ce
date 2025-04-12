@@ -21,7 +21,8 @@ spec:
             - name: EDC_UI_MANAGEMENT_API_KEY
               value: SomeOtherApiKey
             - name: EDC_UI_MANAGEMENT_API_URL
-              value: /api/management
+              value: sovity-provider-api-1.tvsdevops.co.uk
+              # value: /api/management
             - name: NGINX_ACCESS_LOG
               value: "on"
           image: ghcr.io/sovity/edc-ce-ui:11.0.0
