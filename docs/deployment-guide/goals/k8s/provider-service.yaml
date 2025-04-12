@@ -12,3 +12,35 @@ spec:
   selector:
     io.kompose.service: provider
   type: LoadBalancer
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: provider-connector
+  name: provider-connector
+spec:
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 80
+  selector:
+    io.kompose.service: provider-connector
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: provider-ui
+  name: provider-ui
+spec:
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 8080
+  selector:
+    io.kompose.service: provider-ui
+  type: ClusterIP
