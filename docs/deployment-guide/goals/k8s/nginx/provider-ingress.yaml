@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: provider.local
+    - host: sovity-provider.tvsdevops.co.uk
       http:
         paths:
           - path: /api/management(/|$)(.*)
