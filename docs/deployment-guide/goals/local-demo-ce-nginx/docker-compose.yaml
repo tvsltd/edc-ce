@@ -12,6 +12,8 @@ services:
   consumer-ui:
     image: 'ghcr.io/sovity/edc-ce-ui:11.0.0'
     restart: 'always'
+    ports:
+      - '80:8080'
     environment:
       EDC_UI_MANAGEMENT_API_URL: '/api/management'
       EDC_UI_MANAGEMENT_API_KEY: 'SomeOtherApiKey'
@@ -20,6 +22,9 @@ services:
   consumer-connector:
     image: 'ghcr.io/sovity/edc-ce:11.0.0'
     restart: 'always'
+    ports:
+      - '11002:11002'
+      - '11003:11003'
     depends_on:
       consumer-connector-db:
         condition: 'service_healthy'
@@ -51,6 +56,8 @@ services:
   consumer-connector-db:
     image: 'docker.io/postgres:16-alpine'
     restart: 'always'
+    ports:
+      - '5432:5432'
     environment:
       POSTGRES_USER: 'db-user'
       POSTGRES_PASSWORD: 'db-pass'
@@ -77,6 +84,8 @@ services:
   provider-ui:
     image: 'ghcr.io/sovity/edc-ce-ui:11.0.0'
     restart: 'always'
+    ports:
+      - '80:8080'
     environment:
       EDC_UI_MANAGEMENT_API_URL: '/api/management'
       EDC_UI_MANAGEMENT_API_KEY: 'SomeOtherApiKey'
@@ -85,6 +94,9 @@ services:
   provider-connector:
     image: 'ghcr.io/sovity/edc-ce:11.0.0'
     restart: 'always'
+    ports:
+      - '11002:11002'
+      - '11003:11003'
     depends_on:
       provider-connector-db:
         condition: 'service_healthy'
@@ -116,6 +128,8 @@ services:
   provider-connector-db:
     image: 'docker.io/postgres:16-alpine'
     restart: 'always'
+    ports:
+      - '5433:5432'
     environment:
       POSTGRES_USER: 'db-user'
       POSTGRES_PASSWORD: 'db-pass'

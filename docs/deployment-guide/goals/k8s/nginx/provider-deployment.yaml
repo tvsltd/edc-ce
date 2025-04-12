@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: provider
+  name: provider
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: provider
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: provider
+    spec:
+      containers:
+        - env:
+            - name: CONNECTOR_UPSTREAM_HOST
+              value: provider-connector
+            - name: FRONTEND_UPSTREAM_HOST
+              value: provider-ui
+          image: nginx:1.25-alpine
+          name: provider
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/nginx/nginx.conf
+              name: provider-cm0
+              readOnly: true
+              subPath: nginx.conf
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            items:
+              - key: nginx.provider.conf
+                path: nginx.conf
+            name: provider-cm0
+          name: provider-cm0
