@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: provider-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: provider.local
+      http:
+        paths:
+          - path: /api/management(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: provider-connector
+                port:
+                  number: 11002
+          - path: /api/dsp(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: provider-connector
+                port:
+                  number: 11003
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: provider-ui
+                port:
+                  number: 8080
