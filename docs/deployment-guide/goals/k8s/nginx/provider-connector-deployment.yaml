@@ -39,7 +39,7 @@ spec:
             - name: sovity.edc.fqdn.internal
               value: provider.master.svc.cluster.local
             - name: sovity.edc.fqdn.public
-              value: sovity-provider-api-1.tvsdevops.co.uk
+              value: sovity-provider.tvsdevops.co.uk
             - name: sovity.edc.maintainer.name
               value: provider Maintainer
             - name: sovity.edc.maintainer.url

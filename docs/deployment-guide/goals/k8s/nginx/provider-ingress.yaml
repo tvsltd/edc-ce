@@ -6,35 +6,27 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: sovity-provider.tvsdevops.co.uk
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: provider-ui
-                port:
-                  number: 8080
-    # management API
-    - host: sovity-provider-api-1.tvsdevops.co.uk
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: provider-connector
-                port:
-                  number: 11002
-    # DSP API
-    - host: sovity-provider-api-2.tvsdevops.co.uk
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: provider-connector
-                port:
-                  number: 11003
+  - host: sovity-provider.tvsdevops.co.uk
+    http:
+      paths:
+      - path: /api/management
+        pathType: Prefix
+        backend:
+          service:
+            name: provider-connector
+            port:
+              number: 11002
+      - path: /api/dsp
+        pathType: Prefix
+        backend:
+          service:
+            name: provider-connector
+            port:
+              number: 11003
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: provider-ui
+            port:
+              number: 8080

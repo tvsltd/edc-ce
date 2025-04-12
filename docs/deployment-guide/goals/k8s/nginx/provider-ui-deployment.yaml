@@ -21,7 +21,7 @@ spec:
             - name: EDC_UI_MANAGEMENT_API_KEY
               value: SomeOtherApiKey
             - name: EDC_UI_MANAGEMENT_API_URL
-              value: sovity-provider-api-1.tvsdevops.co.uk
+              value: sovity-provider.tvsdevops.co.uk
               # value: /api/management
             - name: NGINX_ACCESS_LOG
               value: "on"
