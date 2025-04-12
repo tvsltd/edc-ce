@@ -129,7 +129,7 @@ services:
     image: 'docker.io/postgres:16-alpine'
     restart: 'always'
     ports:
-      - '5433:5432'
+      - '5432:5432'
     environment:
       POSTGRES_USER: 'db-user'
       POSTGRES_PASSWORD: 'db-pass'
