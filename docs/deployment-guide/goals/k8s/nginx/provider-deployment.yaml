@@ -19,9 +19,9 @@ spec:
       containers:
         - env:
             - name: CONNECTOR_UPSTREAM_HOST
-              value: provider-connector
+              value: provider-connector.master.svc.cluster.local
             - name: FRONTEND_UPSTREAM_HOST
-              value: provider-ui
+              value: provider-ui.master.svc.cluster.local
           image: nginx:1.25-alpine
           name: provider
           ports:

@@ -5,15 +5,15 @@ data:
 
     http {
         upstream management_api {
-            server provider-connector:11002;
+            server provider-connector.master.svc.cluster.local:11002;
         }
 
         upstream dsp_api {
-            server provider-connector:11003;
+            server provider-connector.master.svc.cluster.local:11003;
         }
 
         upstream frontend {
-            server provider-ui:8080;
+            server provider-ui.master.svc.cluster.local:8080;
         }
 
         server {
