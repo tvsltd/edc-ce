@@ -16,6 +16,15 @@ spec:
       labels:
         io.kompose.service: consumer-connector-db
     spec:
+      initContainers:
+        - name: init-volume
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - mkdir -p /mnt/data/consumer-subdir-1 && chown -R 999:999 /mnt/data/consumer-subdir-1
+          volumeMounts:
+            - name: consumer-connector-db-data
+              mountPath: /mnt/data
       containers:
         - env:
             - name: POSTGRES_DB
@@ -28,17 +37,18 @@ spec:
           livenessProbe:
             exec:
               command:
-                - pg_isready -U db-user --dbname=db-name
+                - "pg_isready"
+                - "-U"
+                - "db-user"
+                - "--dbname=db-name"
             failureThreshold: 10
             periodSeconds: 1
             timeoutSeconds: 5
           name: consumer-connector-db
-          ports:
-            - containerPort: 5432
-              protocol: TCP
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: consumer-connector-db-data
+              subPath: consumer-subdir-1
       restartPolicy: Always
       volumes:
         - name: consumer-connector-db-data
