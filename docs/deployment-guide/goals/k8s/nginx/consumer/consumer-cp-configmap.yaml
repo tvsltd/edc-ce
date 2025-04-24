@@ -3,35 +3,63 @@ kind: ConfigMap
 metadata:
   name: consumer-cp-config
 data:
+  # Required Config
+  sovity.deployment.kind: control-plane-standalone
+  sovity.edc.fqdn.internal: localhost
+  sovity.edc.fqdn.public: sovity-consumer.tvsdevops.co.uk
+  sovity.environment: PRODUCTION
+  
+  # Important Config
   edc.api.auth.key: SomeOtherApiKey
   edc.participant.id: consumer
+  sovity.management.api.iam.kind: management-iam-api-key
+  
+  # Optional Config
+  sovity.base.path: /control
+  sovity.print.config: "true"
+  
+  # Overrides
+  sovity.first.port: "12000"
+  sovity.http.protocol: https://
+  web.http.control.path: /control/api/control
+  web.http.control.port: "12004"
+  web.http.management.path: /control/api/management
+  web.http.management.port: "12002"
+  web.http.protocol.path: /control/api/dsp
+  web.http.protocol.port: "12003"
+  
+  # UI Configuration
   edc.ui.active.profile: sovity-open-source
   edc.ui.catalog.urls: https://sovity-provider.tvsdevops.co.uk/control/api/dsp
   edc.ui.logout.url: https://sovity-consumer.tvsdevops.co.uk
-  sovity.dataspace.kind: sovity-mock-iam
-  sovity.deployment.kind: control-plane
+  
+  # Metadata
   sovity.edc.curator.name: consumer Curator
   sovity.edc.curator.url: https://sovity-consumer.tvsdevops.co.uk/curator
   sovity.edc.description: consumer Description
-  sovity.edc.fqdn.internal: localhost
-  sovity.edc.fqdn.public: sovity-consumer.tvsdevops.co.uk
   sovity.edc.maintainer.name: consumer Maintainer
   sovity.edc.maintainer.url: https://sovity-consumer.tvsdevops.co.uk/maintainer
   sovity.edc.title: consumer Title
-  sovity.http.protocol: https://
+  
+  # Database Configuration
   sovity.jdbc.password: db-pass
   sovity.jdbc.url: jdbc:postgresql://consumer-cp-db.master.svc.cluster.local:5432/db-name
   sovity.jdbc.user: db-user
+  
+  # Logging
   sovity.logging.kind: console
   sovity.logging.level: DEBUG
-  sovity.management.api.iam.kind: management-iam-api-key
   sovity.micrometer.enabled: "true"
-  sovity.print.config: "true"
-  # Control Plane specific configurations
+  
+  # Data Plane Configuration
   sovity.edc.dataplane.selector.url: https://sovity-consumer.tvsdevops.co.uk/data/api/control
   sovity.edc.dataplane.token: your-secure-token
-  # Base path configuration
-  edc.api.base.path: /control/api
-  edc.api.management.path: /control/api/management
-  edc.api.protocol.path: /control/api/dsp
-  edc.api.control.path: /control/api/control
+  
+  # Required for EDC 0.7.2+
+  edc.jsonld.http.enabled: "true"
+  edc.jsonld.https.enabled: "true"
+  
+  # CORS Configuration
+  edc.web.rest.cors.enabled: "true"
+  edc.web.rest.cors.headers: "origin,content-type,accept,authorization,X-Api-Key"
+  edc.web.rest.cors.origins: "*"

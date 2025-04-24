@@ -3,21 +3,56 @@ kind: ConfigMap
 metadata:
   name: consumer-dp-config
 data:
-  sovity.deployment.kind: data-plane
+  # Required Config
+  sovity.deployment.kind: data-plane-standalone
   sovity.edc.fqdn.internal: localhost
   sovity.edc.fqdn.public: sovity-consumer.tvsdevops.co.uk
+  sovity.environment: PRODUCTION
+  
+  # Important Config
+  edc.api.auth.key: SomeOtherApiKey
+  edc.participant.id: consumer
+  sovity.management.api.iam.kind: management-iam-api-key
+  
+  # Optional Config
+  sovity.base.path: /data
+  sovity.print.config: "true"
+  
+  # Overrides
+  sovity.first.port: "12000"
+  sovity.http.protocol: https://
+  web.http.control.path: /data/api/control
+  web.http.control.port: "12004"
+  web.http.public.path: /data/api/public
+  web.http.public.port: "12001"
+  web.http.protocol.path: /data/api/dsp
+  web.http.protocol.port: "12003"
+  
+  # Database Configuration
   sovity.jdbc.password: db-pass
   sovity.jdbc.url: jdbc:postgresql://consumer-dp-db.master.svc.cluster.local:5432/db-name
   sovity.jdbc.user: db-user
+  
+  # Logging
   sovity.logging.kind: console
   sovity.logging.level: DEBUG
   sovity.micrometer.enabled: "true"
-  sovity.print.config: "true"
-  # Data Plane specific configurations
-  sovity.edc.controlplane.url: https://sovity-consumer.tvsdevops.co.uk/control/api/control
-  sovity.edc.controlplane.token: your-secure-token
-  # Base path configuration
-  edc.api.base.path: /data/api
-  edc.api.control.path: /data/api/control
-  edc.api.public.path: /data/api/public
-  edc.api.proxy.path: /data/api/proxy
+  
+  # Control Plane Configuration
+  sovity.internal.cp.protocol: https
+  sovity.internal.cp.fqdn: sovity-consumer.tvsdevops.co.uk
+  sovity.internal.cp.management.port: "12002"
+  sovity.internal.cp.management.path: /control/api/management
+  sovity.internal.cp.protocol.port: "12003"
+  sovity.internal.cp.protocol.path: /control/api/dsp
+  sovity.internal.cp.control.port: "12004"
+  sovity.internal.cp.control.path: /control/api/control
+  
+  # Required for EDC 0.7.2+
+  edc.jsonld.http.enabled: "true"
+  edc.jsonld.https.enabled: "true"
+  
+  # CORS Configuration
+  edc.web.rest.cors.enabled: "true"
+  edc.web.rest.cors.headers: "origin,content-type,accept,authorization,X-Api-Key"
+  edc.web.rest.cors.origins: "*"
