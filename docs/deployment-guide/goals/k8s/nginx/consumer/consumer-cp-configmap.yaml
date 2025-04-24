@@ -6,15 +6,15 @@ data:
   edc.api.auth.key: SomeOtherApiKey
   edc.participant.id: consumer
   edc.ui.active.profile: sovity-open-source
-  edc.ui.catalog.urls: https://sovity-provider.tvsdevops.co.uk/api/dsp
-  edc.ui.logout.url: https://example.com
+  edc.ui.catalog.urls: https://sovity-provider.tvsdevops.co.uk/control/api/dsp
+  edc.ui.logout.url: https://sovity-consumer.tvsdevops.co.uk
   sovity.dataspace.kind: sovity-mock-iam
   sovity.deployment.kind: control-plane
   sovity.edc.curator.name: consumer Curator
   sovity.edc.curator.url: https://sovity-consumer.tvsdevops.co.uk/curator
   sovity.edc.description: consumer Description
   sovity.edc.fqdn.internal: localhost
-  sovity.edc.fqdn.public: consumer
+  sovity.edc.fqdn.public: sovity-consumer.tvsdevops.co.uk
   sovity.edc.maintainer.name: consumer Maintainer
   sovity.edc.maintainer.url: https://sovity-consumer.tvsdevops.co.uk/maintainer
   sovity.edc.title: consumer Title
@@ -28,5 +28,10 @@ data:
   sovity.micrometer.enabled: "true"
   sovity.print.config: "true"
   # Control Plane specific configurations
-  sovity.edc.dataplane.selector.url: http://consumer-dp.master.svc.cluster.local:11003/api/dataplane/control
-  sovity.edc.dataplane.token: your-secure-token 
+  sovity.edc.dataplane.selector.url: https://sovity-consumer.tvsdevops.co.uk/data/api/control
+  sovity.edc.dataplane.token: your-secure-token
+  # Base path configuration
+  edc.api.base.path: /control/api
+  edc.api.management.path: /control/api/management
+  edc.api.protocol.path: /control/api/dsp
+  edc.api.control.path: /control/api/control

@@ -5,7 +5,7 @@ metadata:
 data:
   sovity.deployment.kind: data-plane
   sovity.edc.fqdn.internal: localhost
-  sovity.edc.fqdn.public: consumer
+  sovity.edc.fqdn.public: sovity-consumer.tvsdevops.co.uk
   sovity.jdbc.password: db-pass
   sovity.jdbc.url: jdbc:postgresql://consumer-dp-db.master.svc.cluster.local:5432/db-name
   sovity.jdbc.user: db-user
@@ -14,5 +14,10 @@ data:
   sovity.micrometer.enabled: "true"
   sovity.print.config: "true"
   # Data Plane specific configurations
-  sovity.edc.controlplane.url: http://consumer-cp.master.svc.cluster.local:11002/api/control
-  sovity.edc.controlplane.token: your-secure-token 
+  sovity.edc.controlplane.url: https://sovity-consumer.tvsdevops.co.uk/control/api/control
+  sovity.edc.controlplane.token: your-secure-token
+  # Base path configuration
+  edc.api.base.path: /data/api
+  edc.api.control.path: /data/api/control
+  edc.api.public.path: /data/api/public
+  edc.api.proxy.path: /data/api/proxy
