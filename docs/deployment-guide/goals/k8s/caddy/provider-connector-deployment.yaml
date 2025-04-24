@@ -15,55 +15,9 @@ spec:
         io.kompose.service: provider-connector
     spec:
       containers:
-        - env:
-            - name: edc.api.auth.key
-              value: SomeOtherApiKey
-            - name: edc.participant.id
-              value: provider
-            - name: edc.ui.active.profile
-              value: sovity-open-source
-            - name: edc.ui.catalog.urls
-              value: http://consumer.master.svc.cluster.local/api/dsp
-            - name: edc.ui.logout.url
-              value: https://example.com
-            - name: sovity.dataspace.kind
-              value: sovity-mock-iam
-            - name: sovity.deployment.kind
-              value: control-plane-with-integrated-data-plane
-            - name: sovity.edc.curator.name
-              value: provider Curator
-            - name: sovity.edc.curator.url
-              value: https://provider.master.svc.cluster.local/curator
-            - name: sovity.edc.description
-              value: provider Description
-            - name: sovity.edc.fqdn.internal
-              value: localhost
-            - name: sovity.edc.fqdn.public
-              value: provider
-            - name: sovity.edc.maintainer.name
-              value: provider Maintainer
-            - name: sovity.edc.maintainer.url
-              value: https://provider.master.svc.cluster.local/maintainer
-            - name: sovity.edc.title
-              value: provider Title
-            - name: sovity.http.protocol
-              value: http://
-            - name: sovity.jdbc.password
-              value: db-pass
-            - name: sovity.jdbc.url
-              value: jdbc:postgresql://provider-connector-db.master.svc.cluster.local:5432/db-name
-            - name: sovity.jdbc.user
-              value: db-user
-            - name: sovity.logging.kind
-              value: console
-            - name: sovity.logging.level
-              value: DEBUG
-            - name: sovity.management.api.iam.kind
-              value: management-iam-api-key
-            - name: sovity.micrometer.enabled
-              value: "true"
-            - name: sovity.print.config
-              value: "true"
+        - envFrom:
+            - configMapRef:
+                name: provider-connector-config
           image: ghcr.io/sovity/edc-ce:11.0.0
           name: provider-connector
       restartPolicy: Always
