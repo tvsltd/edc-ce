@@ -23,7 +23,7 @@ spec:
             - name: edc.ui.active.profile
               value: sovity-open-source
             - name: edc.ui.catalog.urls
-              value: http://provider.master.svc.cluster.local/api/dsp
+              value: https://sovity-provider.tvsdevops.co.uk/api/dsp
             - name: edc.ui.logout.url
               value: https://example.com
             - name: sovity.dataspace.kind
@@ -33,7 +33,7 @@ spec:
             - name: sovity.edc.curator.name
               value: consumer Curator
             - name: sovity.edc.curator.url
-              value: https://consumer.master.svc.cluster.local/curator
+              value: https://sovity-consumer.tvsdevops.co.uk/curator
             - name: sovity.edc.description
               value: consumer Description
             - name: sovity.edc.fqdn.internal
@@ -43,11 +43,11 @@ spec:
             - name: sovity.edc.maintainer.name
               value: consumer Maintainer
             - name: sovity.edc.maintainer.url
-              value: https://consumer.master.svc.cluster.local/maintainer
+              value: https://sovity-consumer.tvsdevops.co.uk/maintainer
             - name: sovity.edc.title
               value: consumer Title
             - name: sovity.http.protocol
-              value: http://
+              value: https://
             - name: sovity.jdbc.password
               value: db-pass
             - name: sovity.jdbc.url
