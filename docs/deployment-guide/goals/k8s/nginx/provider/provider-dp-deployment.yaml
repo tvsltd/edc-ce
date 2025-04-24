@@ -21,6 +21,16 @@ spec:
           image: ghcr.io/sovity/edc-ce:11.0.0
           name: provider-dp
           ports:
-            - containerPort: 11003
+            - containerPort: 12001
+              name: health
+              protocol: TCP
+            - containerPort: 12002
+              name: control
+              protocol: TCP
+            - containerPort: 12003
+              name: public
+              protocol: TCP
+            - containerPort: 12004
+              name: proxy
               protocol: TCP
       restartPolicy: Always 

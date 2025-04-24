@@ -28,5 +28,10 @@ data:
   sovity.micrometer.enabled: "true"
   sovity.print.config: "true"
   # Control Plane specific configurations
-  sovity.edc.dataplane.selector.url: http://provider-dp.master.svc.cluster.local:11003/api/dataplane/control
-  sovity.edc.dataplane.token: your-secure-token 
+  sovity.edc.dataplane.selector.url: http://provider-dp.master.svc.cluster.local:12004/data/api/control
+  sovity.edc.dataplane.token: your-secure-token
+  # Base path configuration
+  edc.api.base.path: /control/api
+  edc.api.management.path: /control/api/management
+  edc.api.protocol.path: /control/api/dsp
+  edc.api.control.path: /control/api/control 
