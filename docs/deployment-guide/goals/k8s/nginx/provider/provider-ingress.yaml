@@ -6,23 +6,37 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: provider.master.svc.cluster.local
+    - host: sovity-provider.tvsdevops.co.uk
       http:
         paths:
-          - path: /api/management
+          - path: /control/api/management
             pathType: Prefix
             backend:
               service:
                 name: provider-cp
                 port:
                   number: 11002
-          - path: /api/dataplane
+          - path: /control/api/dsp
+            pathType: Prefix
+            backend:
+              service:
+                name: provider-cp
+                port:
+                  number: 11003
+          - path: /data/api/public
             pathType: Prefix
             backend:
               service:
                 name: provider-dp
                 port:
-                  number: 11003
+                  number: 12005
+          - path: /data/api/proxy
+            pathType: Prefix
+            backend:
+              service:
+                name: provider-dp
+                port:
+                  number: 12006
           - path: /
             pathType: Prefix
             backend:
