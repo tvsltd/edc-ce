@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: consumer-dp
+  name: consumer-dp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: consumer-dp
+  template:
+    metadata:
+      labels:
+        io.kompose.service: consumer-dp
+    spec:
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: consumer-dp-config
+          image: ghcr.io/sovity/edc-ce:11.0.0
+          name: consumer-dp
+          ports:
+            - containerPort: 11003
+              protocol: TCP
+      restartPolicy: Always 

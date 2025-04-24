@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: consumer-dp-db
+  name: consumer-dp-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: consumer-dp-db
+  template:
+    metadata:
+      labels:
+        io.kompose.service: consumer-dp-db
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: db-user
+            - name: POSTGRES_PASSWORD
+              value: db-pass
+            - name: POSTGRES_DB
+              value: db-name
+          image: docker.io/postgres:16-alpine
+          name: consumer-dp-db
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: consumer-dp-db-data
+      volumes:
+        - name: consumer-dp-db-data
+          persistentVolumeClaim:
+            claimName: consumer-dp-db-data
+      restartPolicy: Always 
