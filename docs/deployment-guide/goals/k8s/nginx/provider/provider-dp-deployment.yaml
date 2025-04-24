@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: provider-dp
+  name: provider-dp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: provider-dp
+  template:
+    metadata:
+      labels:
+        io.kompose.service: provider-dp
+    spec:
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: provider-dp-config
+          image: ghcr.io/sovity/edc-ce:11.0.0
+          name: provider-dp
+          ports:
+            - containerPort: 11003
+              protocol: TCP
+      restartPolicy: Always 

@@ -1,32 +1,32 @@
 apiVersion: networking.k8s.io/v1
-kind: Ingress  
+kind: Ingress
 metadata:
   name: provider-ingress
   namespace: master
 spec:
   ingressClassName: nginx
   rules:
-  - host: sovity-provider.tvsdevops.co.uk
-    http:
-      paths:
-      - path: /api/management
-        pathType: Prefix
-        backend:
-          service:
-            name: provider-connector
-            port:
-              number: 11002
-      - path: /api/dsp
-        pathType: Prefix
-        backend:
-          service:
-            name: provider-connector
-            port:
-              number: 11003
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: provider-ui
-            port:
-              number: 8080
+    - host: provider.master.svc.cluster.local
+      http:
+        paths:
+          - path: /api/management
+            pathType: Prefix
+            backend:
+              service:
+                name: provider-cp
+                port:
+                  number: 11002
+          - path: /api/dataplane
+            pathType: Prefix
+            backend:
+              service:
+                name: provider-dp
+                port:
+                  number: 11003
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: provider-ui
+                port:
+                  number: 80

@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: provider-cp-config
+data:
+  edc.api.auth.key: SomeOtherApiKey
+  edc.participant.id: provider
+  edc.ui.active.profile: sovity-open-source
+  edc.ui.catalog.urls: http://consumer.master.svc.cluster.local/api/dsp
+  edc.ui.logout.url: https://example.com
+  sovity.dataspace.kind: sovity-mock-iam
+  sovity.deployment.kind: control-plane
+  sovity.edc.curator.name: provider Curator
+  sovity.edc.curator.url: https://provider.master.svc.cluster.local/curator
+  sovity.edc.description: provider Description
+  sovity.edc.fqdn.internal: localhost
+  sovity.edc.fqdn.public: provider
+  sovity.edc.maintainer.name: provider Maintainer
+  sovity.edc.maintainer.url: https://provider.master.svc.cluster.local/maintainer
+  sovity.edc.title: provider Title
+  sovity.http.protocol: http://
+  sovity.jdbc.password: db-pass
+  sovity.jdbc.url: jdbc:postgresql://provider-cp-db.master.svc.cluster.local:5432/db-name
+  sovity.jdbc.user: db-user
+  sovity.logging.kind: console
+  sovity.logging.level: DEBUG
+  sovity.management.api.iam.kind: management-iam-api-key
+  sovity.micrometer.enabled: "true"
+  sovity.print.config: "true"
+  # Control Plane specific configurations
+  sovity.edc.dataplane.selector.url: http://provider-dp.master.svc.cluster.local:11003/api/dataplane/control
+  sovity.edc.dataplane.token: your-secure-token 

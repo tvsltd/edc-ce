@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: provider-cp-db
+  name: provider-cp-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: provider-cp-db
+  template:
+    metadata:
+      labels:
+        io.kompose.service: provider-cp-db
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: db-user
+            - name: POSTGRES_PASSWORD
+              value: db-pass
+            - name: POSTGRES_DB
+              value: db-name
+          image: docker.io/postgres:16-alpine
+          name: provider-cp-db
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: provider-cp-db-data
+      volumes:
+        - name: provider-cp-db-data
+          persistentVolumeClaim:
+            claimName: provider-cp-db-data
+      restartPolicy: Always 

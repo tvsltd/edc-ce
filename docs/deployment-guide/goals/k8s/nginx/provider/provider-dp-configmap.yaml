@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: provider-dp-config
+data:
+  sovity.deployment.kind: data-plane
+  sovity.edc.fqdn.internal: localhost
+  sovity.edc.fqdn.public: provider
+  sovity.jdbc.password: db-pass
+  sovity.jdbc.url: jdbc:postgresql://provider-dp-db.master.svc.cluster.local:5432/db-name
+  sovity.jdbc.user: db-user
+  sovity.logging.kind: console
+  sovity.logging.level: DEBUG
+  sovity.micrometer.enabled: "true"
+  sovity.print.config: "true"
+  # Data Plane specific configurations
+  sovity.edc.controlplane.url: http://provider-cp.master.svc.cluster.local:11002/api/control
+  sovity.edc.controlplane.token: your-secure-token 
