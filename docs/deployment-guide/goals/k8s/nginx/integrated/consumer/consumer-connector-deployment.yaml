@@ -4,6 +4,8 @@ metadata:
   labels:
     io.kompose.service: consumer-connector
   name: consumer-connector
+  annotations:
+    configmap.reloader.stakater.com/reload: "consumer-connector-config"
 spec:
   replicas: 1
   selector:
