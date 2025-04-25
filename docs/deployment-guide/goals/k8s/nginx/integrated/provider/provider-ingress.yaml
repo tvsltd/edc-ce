@@ -4,7 +4,7 @@ metadata:
   name: provider-ingress-int
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: "letsencrypt-prd-account-key"
+    cert-manager.io/cluster-issuer: "letsencrypt-prd"
 spec:
   ingressClassName: nginx
   rules:
