@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: consumer-connector-config
+data:
+  edc.api.auth.key: SomeOtherApiKey
+  edc.participant.id: consumer
+  edc.ui.active.profile: sovity-open-source
+  edc.ui.catalog.urls: https://sovity-provider.tvsdevops.co.uk/api/dsp
+  edc.ui.logout.url: https://example.com
+  sovity.dataspace.kind: sovity-mock-iam
+  sovity.deployment.kind: control-plane-with-integrated-data-plane
+  sovity.edc.curator.name: consumer Curator
+  sovity.edc.curator.url: https://sovity-consumer.tvsdevops.co.uk/curator
+  sovity.edc.description: consumer Description
+  sovity.edc.fqdn.internal: localhost
+  sovity.edc.fqdn.public: consumer
+  sovity.edc.maintainer.name: consumer Maintainer
+  sovity.edc.maintainer.url: https://sovity-consumer.tvsdevops.co.uk/maintainer
+  sovity.edc.title: consumer Title
+  sovity.http.protocol: https://
+  sovity.jdbc.password: db-pass
+  sovity.jdbc.url: jdbc:postgresql://consumer-connector-db.master.svc.cluster.local:5432/db-name
+  sovity.jdbc.user: db-user
+  sovity.logging.kind: console
+  sovity.logging.level: DEBUG
+  sovity.management.api.iam.kind: management-iam-api-key
+  sovity.micrometer.enabled: "true"
+  sovity.print.config: "true" 
