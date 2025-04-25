@@ -1,32 +1,46 @@
 apiVersion: networking.k8s.io/v1
-kind: Ingress  
+kind: Ingress
 metadata:
   name: consumer-ingress
   namespace: master
 spec:
   ingressClassName: nginx
   rules:
-  - host: sovity-consumer.tvsdevops.co.uk
-    http:
-      paths:
-      - path: /api/management
-        pathType: Prefix
-        backend:
-          service:
-            name: consumer-connector
-            port:
-              number: 11002
-      - path: /api/dsp
-        pathType: Prefix
-        backend:
-          service:
-            name: consumer-connector
-            port:
-              number: 11003
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: consumer-ui
-            port:
-              number: 8080
+    - host: sovity-consumer.tvsdevops.co.uk
+      http:
+        paths:
+          - path: /control/api/management
+            pathType: Prefix
+            backend:
+              service:
+                name: consumer-cp
+                port:
+                  number: 11002
+          - path: /control/api/dsp
+            pathType: Prefix
+            backend:
+              service:
+                name: consumer-cp
+                port:
+                  number: 11003
+          - path: /data/api/public
+            pathType: Prefix
+            backend:
+              service:
+                name: consumer-dp
+                port:
+                  number: 12005
+          - path: /data/api/proxy
+            pathType: Prefix
+            backend:
+              service:
+                name: consumer-dp
+                port:
+                  number: 12006
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: consumer-ui
+                port:
+                  number: 80
