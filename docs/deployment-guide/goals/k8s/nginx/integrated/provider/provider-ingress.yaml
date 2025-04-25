@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress  
 metadata:
   name: provider-ingress-int
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prd-account-key"
 spec:
   ingressClassName: nginx
   rules:
