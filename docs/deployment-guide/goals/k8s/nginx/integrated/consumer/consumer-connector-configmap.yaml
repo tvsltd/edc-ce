@@ -6,17 +6,17 @@ data:
   edc.api.auth.key: SomeOtherApiKey
   edc.participant.id: consumer
   edc.ui.active.profile: sovity-open-source
-  edc.ui.catalog.urls: https://sovity-provider.tvsdevops.co.uk/api/dsp
-  edc.ui.logout.url: https://example.com
+  edc.ui.catalog.urls: https://provider-int-sovity.tvsdevops.co.uk/api/dsp
+  edc.ui.logout.url: https://consumer-int-sovity.tvsdevops.co.uk
   sovity.dataspace.kind: sovity-mock-iam
   sovity.deployment.kind: control-plane-with-integrated-data-plane
   sovity.edc.curator.name: consumer Curator
-  sovity.edc.curator.url: https://sovity-consumer.tvsdevops.co.uk/curator
+  sovity.edc.curator.url: https://consumer-int-sovity.tvsdevops.co.uk/curator
   sovity.edc.description: consumer Description
   sovity.edc.fqdn.internal: localhost
-  sovity.edc.fqdn.public: consumer
+  sovity.edc.fqdn.public: consumer-int-sovity.tvsdevops.co.uk
   sovity.edc.maintainer.name: consumer Maintainer
-  sovity.edc.maintainer.url: https://sovity-consumer.tvsdevops.co.uk/maintainer
+  sovity.edc.maintainer.url: https://consumer-int-sovity.tvsdevops.co.uk/maintainer
   sovity.edc.title: consumer Title
   sovity.http.protocol: https://
   sovity.jdbc.password: db-pass

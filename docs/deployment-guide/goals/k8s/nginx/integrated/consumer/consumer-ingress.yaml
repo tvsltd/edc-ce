@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: sovity-consumer.tvsdevops.co.uk
+  - host: consumer-int-sovity.tvsdevops.co.uk
     http:
       paths:
       - path: /api/management
