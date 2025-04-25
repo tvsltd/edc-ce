@@ -2,6 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress  
 metadata:
   name: consumer-ingress-int
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-prd"
 spec:
   ingressClassName: nginx
   rules:
@@ -29,3 +32,7 @@ spec:
             name: consumer-ui
             port:
               number: 8080
+  tls:
+  - hosts:
+    - consumer-int-sovity.tvsdevops.co.uk
+    secretName: letsencrypt-prd-account-key
