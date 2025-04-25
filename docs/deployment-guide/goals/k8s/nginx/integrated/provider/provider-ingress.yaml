@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: provider-ingress-int
   annotations:
+    kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: "letsencrypt-prd-account-key"
 spec:
   ingressClassName: nginx
