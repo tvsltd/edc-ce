@@ -9,18 +9,18 @@ data:
   edc.ui.catalog.urls: https://provider-std-sovity.tvsdevops.co.uk/api/dsp
   edc.ui.logout.url: https://consumer-std-sovity.tvsdevops.co.uk
   sovity.dataspace.kind: sovity-mock-iam
-  sovity.deployment.kind: control-plane-with-integrated-data-plane
+  sovity.deployment.kind: control-plane-with-standalone-data-plane
   sovity.edc.curator.name: consumer Curator
   sovity.edc.curator.url: https://consumer-std-sovity.tvsdevops.co.uk/curator
   sovity.edc.description: consumer Description
-  sovity.edc.fqdn.internal: consumer.integrated.svc.cluster.local # prev value -> localhost
+  sovity.edc.fqdn.internal: consumer.standalone.svc.cluster.local # prev value -> localhost
   sovity.edc.fqdn.public: consumer-std-sovity.tvsdevops.co.uk
   sovity.edc.maintainer.name: consumer Maintainer
   sovity.edc.maintainer.url: https://consumer-std-sovity.tvsdevops.co.uk/maintainer
   sovity.edc.title: consumer Title
   sovity.http.protocol: https://
   sovity.jdbc.password: db-pass
-  sovity.jdbc.url: jdbc:postgresql://consumer-connector-db.integrated.svc.cluster.local:5432/db-name
+  sovity.jdbc.url: jdbc:postgresql://consumer-connector-db.standalone.svc.cluster.local:5432/db-name
   sovity.jdbc.user: db-user
   sovity.logging.kind: console
   sovity.logging.level: DEBUG
