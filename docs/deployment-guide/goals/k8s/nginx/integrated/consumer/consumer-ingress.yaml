@@ -4,7 +4,7 @@ metadata:
   name: consumer-ingress-int
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: "letsencrypt-prd"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
   rules:
@@ -35,4 +35,4 @@ spec:
   tls:
   - hosts:
     - consumer-int-sovity.tvsdevops.co.uk
-    secretName: letsencrypt-prd-account-key
+    secretName: myapp-tls-secret
