@@ -11,14 +11,14 @@ spec:
   - host: provider-std-sovity.tvsdevops.co.uk
     http:
       paths:
-      - path: /api/management
+      - path: /control/api/management
         pathType: Prefix
         backend:
           service:
             name: provider-connector
             port:
               number: 11002
-      - path: /api/dsp
+      - path: /control/api/dsp
         pathType: Prefix
         backend:
           service:
