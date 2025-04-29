@@ -5,6 +5,7 @@ metadata:
   labels:
     io.kompose.service: provider-connector
 data:
+  # Below are the required settings for the connector to start
   sovity.deployment.kind: "control-plane-standalone"
   edc.participant.id: "provider"
   edc.runtime.id: "provider-runtime"
@@ -14,7 +15,6 @@ data:
   sovity.jdbc.password: "db-pass"
   sovity.jdbc.url: "jdbc:postgresql://provider-connector-db.standalone.svc.cluster.local:5432/db-name"
   sovity.jdbc.user: "db-user"
-  # Above are the required settings for the connector to start
   # Below are optional settings that can be used to configure the connector
   sovity.management.api.iam.kind: "management-iam-api-key"
   # edc.api.auth.key: "SomeOtherApiKey"
@@ -31,4 +31,6 @@ data:
   # sovity.logging.kind: "console"
   # sovity.logging.level: "DEBUG"
   # sovity.micrometer.enabled: "true"
-  # sovity.print.config: "true" 
+  # sovity.print.config: "true"
+  #Below are the settings for testing control plane standalone
+  
