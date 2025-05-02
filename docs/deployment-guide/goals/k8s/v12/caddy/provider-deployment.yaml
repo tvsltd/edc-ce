@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: provider
+  name: provider
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: provider
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: provider
+    spec:
+      containers:
+        - env:
+            - name: CONNECTOR_UPSTREAM_HOST
+              value: provider-connector.master.svc.cluster.local
+              # value: 10.108.0.168
+            - name: FRONTEND_UPSTREAM_HOST
+              value: provider-ui.master.svc.cluster.local
+              # value: 10.108.0.181
+          image: caddy:2.8
+          name: provider
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/caddy/Caddyfile
+              name: provider-cm0
+              subPath: Caddyfile
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            items:
+              - key: Caddyfile.cp-with-integrated-dp
+                path: Caddyfile
+            name: provider-cm0
+          name: provider-cm0

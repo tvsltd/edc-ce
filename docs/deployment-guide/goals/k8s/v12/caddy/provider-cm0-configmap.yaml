@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  Caddyfile.cp-with-integrated-dp: |
+    http://* {
+      map {path} {target_host} {target_port} {
+        ~^/api/management($|/.*) {$CONNECTOR_UPSTREAM_HOST}      11002
+        ~^/api/dsp($|/.*)        {$CONNECTOR_UPSTREAM_HOST}      11003
+        default                  {$FRONTEND_UPSTREAM_HOST}       80
+      }
+
+      reverse_proxy {target_host}:{target_port}
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    use-subpath: "true"
+  labels:
+    io.kompose.service: provider
+  name: provider-cm0

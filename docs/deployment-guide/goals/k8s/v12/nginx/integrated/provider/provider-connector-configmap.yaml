@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: provider-connector-config
+  labels:
+    io.kompose.service: provider-connector
+data:
+  edc.api.auth.key: "SomeOtherApiKey"
+  edc.participant.id: "provider"
+  edc.ui.active.profile: "sovity-open-source"
+  edc.ui.catalog.urls: "https://consumer-int-sovity.tvsdevops.co.uk/api/dsp"
+  edc.ui.logout.url: "https://provider-int-sovity.tvsdevops.co.uk"
+  sovity.dataspace.kind: "sovity-mock-iam"
+  sovity.deployment.kind: "control-plane-with-integrated-data-plane"
+  sovity.edc.curator.name: "provider Curator"
+  sovity.edc.curator.url: "https://provider-int-sovity.tvsdevops.co.uk/curator"
+  sovity.edc.description: "provider Description"
+  sovity.edc.fqdn.internal: "provider.integrated.svc.cluster.local"
+  sovity.edc.fqdn.public: "provider-int-sovity.tvsdevops.co.uk"
+  sovity.edc.maintainer.name: "provider Maintainer"
+  sovity.edc.maintainer.url: "https://provider-int-sovity.tvsdevops.co.uk/maintainer"
+  sovity.edc.title: "provider Title"
+  sovity.http.protocol: "https://"
+  sovity.jdbc.password: "db-pass"
+  sovity.jdbc.url: "jdbc:postgresql://provider-connector-db.integrated.svc.cluster.local:5432/db-name"
+  sovity.jdbc.user: "db-user"
+  sovity.logging.kind: "console"
+  sovity.logging.level: "DEBUG"
+  sovity.management.api.iam.kind: "management-iam-api-key"
+  sovity.micrometer.enabled: "true"
+  sovity.print.config: "true" 
