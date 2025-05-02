@@ -25,3 +25,4 @@ data:
   sovity.logging.level: "DEBUG"
   sovity.management.api.iam.kind: "management-iam-api-key"
   sovity.print.config: "true" 
+  sovity.edc.ui.preconfigured.counterparties: 'http://provider-int-sovity.tvsdevops.co.uk/api/dsp?participantId=provider'
