@@ -20,7 +20,7 @@ spec:
               value: '/api/management'
             - name: NEXT_PUBLIC_MANAGEMENT_API_KEY
               value: 'SomeOtherApiKey'
-          image: ghcr.io/sovity/edc-ce-ui:12.0.0'
+          image: 'ghcr.io/sovity/edc-ce-ui:12.0.0'
           name: provider-ui
           ports:
             - containerPort: 8080
