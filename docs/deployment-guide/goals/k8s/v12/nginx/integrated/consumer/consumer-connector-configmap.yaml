@@ -5,9 +5,6 @@ metadata:
 data:
   edc.api.auth.key: SomeOtherApiKey
   edc.participant.id: consumer
-  edc.ui.active.profile: sovity-open-source
-  edc.ui.catalog.urls: https://provider-int-sovity.tvsdevops.co.uk/api/dsp
-  edc.ui.logout.url: https://consumer-int-sovity.tvsdevops.co.uk
   sovity.dataspace.kind: sovity-mock-iam
   sovity.deployment.kind: control-plane-with-integrated-data-plane
   sovity.edc.curator.name: consumer Curator
