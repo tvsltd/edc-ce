@@ -20,7 +20,7 @@ spec:
         - envFrom:
             - configMapRef:
                 name: provider-connector-config
-          image: ghcr.io/sovity/edc-ce:11.0.0
+          image: ghcr.io/sovity/edc-ce:12.0.0
           name: provider-connector
           ports:
             - containerPort: 11002
