@@ -24,5 +24,4 @@ data:
   sovity.logging.kind: "console"
   sovity.logging.level: "DEBUG"
   sovity.management.api.iam.kind: "management-iam-api-key"
-  sovity.micrometer.enabled: "true"
   sovity.print.config: "true" 
