@@ -16,15 +16,11 @@ spec:
     spec:
       containers:
         - env:
-            - name: EDC_UI_CONFIG_URL
-              value: edc-ui-config
-            - name: EDC_UI_MANAGEMENT_API_KEY
-              value: SomeOtherApiKey
-            - name: EDC_UI_MANAGEMENT_API_URL
-              value: /api/management
-            - name: NGINX_ACCESS_LOG
-              value: "on"
-          image: ghcr.io/sovity/edc-ce-ui:11.0.0
+            - name: NEXT_PUBLIC_MANAGEMENT_API_URL
+              value: '/api/management'
+            - name: NEXT_PUBLIC_MANAGEMENT_API_KEY
+              value: 'SomeOtherApiKey'
+          image: ghcr.io/sovity/edc-ce-ui:12.0.0'
           name: provider-ui
           ports:
             - containerPort: 8080
