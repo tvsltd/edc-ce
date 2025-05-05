@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress  
+metadata:
+  name: consumer-ingress-int
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: consumer-int-sovity.tvsdevops.co.uk
+    http:
+      paths:
+      - path: /api/management
+        pathType: Prefix
+        backend:
+          service:
+            name: consumer-connector
+            port:
+              number: 11002
+      - path: /api/dsp
+        pathType: Prefix
+        backend:
+          service:
+            name: consumer-connector
+            port:
+              number: 11003
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: consumer-ui
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - consumer-int-sovity.tvsdevops.co.uk
+    secretName: myapp-tls-secret
