@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: provider-connector
+  name: provider-connector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: provider-connector
+  template:
+    metadata:
+      labels:
+        io.kompose.service: provider-connector
+    spec:
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: provider-connector-config
+          image: ghcr.io/sovity/edc-ce:11.0.0
+          name: provider-connector
+      restartPolicy: Always
