@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: myapp-tls-cert
+  namespace: integrated # Use the namespace where your applications reside
+spec:
+  secretName: myapp-tls-secret # The secret where the certificate and key will be stored
+  issuerRef:
+    name: letsencrypt-prod # Must match the ClusterIssuer name
+    kind: ClusterIssuer
+  commonName: provider-int-sovity.tvsdevops.co.uk # Primary subdomain (can be any one of your subdomains)
+  dnsNames:
+    - provider-int-sovity.tvsdevops.co.uk
+    - consumer-int-sovity.tvsdevops.co.uk
+    - keycloak-int-sovity.tvsdevops.co.uk
