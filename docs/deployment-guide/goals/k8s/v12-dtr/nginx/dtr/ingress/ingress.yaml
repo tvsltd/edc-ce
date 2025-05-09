@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress  
+metadata:
+  name: dtr-ingress-int
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: dtr-int-sovity.tvsdevops.co.uk
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cx-registry-registry-svc
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - dtr-int-sovity.tvsdevops.co.uk
+    secretName: myapp-tls-secret
