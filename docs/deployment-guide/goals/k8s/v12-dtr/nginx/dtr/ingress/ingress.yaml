@@ -21,5 +21,4 @@ spec:
   tls:
   - hosts:
     - dtr-int-sovity.tvsdevops.co.uk
-    - dtr-2-int-sovity.tvsdevops.co.uk
     secretName: dtr-tls-secret
