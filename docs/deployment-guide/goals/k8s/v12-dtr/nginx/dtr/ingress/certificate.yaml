@@ -11,3 +11,4 @@ spec:
   commonName: dtr-int-sovity.tvsdevops.co.uk # Primary subdomain (can be any one of your subdomains)
   dnsNames:
     - dtr-int-sovity.tvsdevops.co.uk
+    - dtr-2-int-sovity.tvsdevops.co.uk
