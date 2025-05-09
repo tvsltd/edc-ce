@@ -21,4 +21,4 @@ spec:
   tls:
   - hosts:
     - dtr-int-sovity.tvsdevops.co.uk
-    secretName: myapp-tls-secret
+    secretName: dtr-tls-secret
