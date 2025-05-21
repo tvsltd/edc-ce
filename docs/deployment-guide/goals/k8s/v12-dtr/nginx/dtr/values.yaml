@@ -35,15 +35,15 @@ registry:
   replicaCount: 1
   imagePullPolicy: IfNotPresent
   containerPort: 4243
-  host: minikube
+  # host: minikube
   ## If 'authentication' is set to false, no OAuth authentication is enforced
-  authentication: true
+  authentication: false
   # Issuer url for the dtr (resource server),
   # make sure that the url points to an externally resolvable hostname.
   # If no value is committed, and the integrated Keycloak is enabled,
   # the K8s internal service name is used, which is a problem, when
   # validating the issuer claim in an access token
-  idpIssuerUri: ""
+  # idpIssuerUri: "https://kc-dtr-int-sovity.tvsdevops.co.uk"
   idpClientId: default-client
   tenantId: default-tenant
   externalSubjectIdWildcardPrefix: PUBLIC_READABLE

@@ -13,10 +13,10 @@ CLIENT_ID="default-client"
 CLIENT_SECRET="wJcfhf5uXynRcAHy5Ua9KAwM4EhsFvC1"
 
 # Add verbose output for debugging
-echo "Requesting token from: ${TOKEN_ENDPOINT}"
+# echo "Requesting token from: ${TOKEN_ENDPOINT}"
 
 # Make the request
-curl -v -X POST \
+curl -X POST \
   "${TOKEN_ENDPOINT}" \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   --data-urlencode 'grant_type=client_credentials' \
