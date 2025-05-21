@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name:  dtr-tls-cert
+  namespace: loki-stack # Use the namespace where your applications reside
+spec:
+  secretName: dtr-tls-secret # The secret where the certificate and key will be stored
+  issuerRef:
+    name: letsencrypt-prod # Must match the ClusterIssuer name
+    kind: ClusterIssuer
+  commonName: grafana.dtr-int-sovity.tvsdevops.co.uk # Primary subdomain (can be any one of your subdomains)
+  dnsNames:
+    - grafana.dtr-int-sovity.tvsdevops.co.uk
