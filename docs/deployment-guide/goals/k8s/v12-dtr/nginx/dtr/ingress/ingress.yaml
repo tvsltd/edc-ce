@@ -18,6 +18,16 @@ spec:
             name: cx-registry-registry-svc
             port:
               number: 8080
+  - host: kc-dtr-int-sovity.tvsdevops.co.uk
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: registry-keycloak
+            port:
+              number: 80
   tls:
   - hosts:
     - dtr-int-sovity.tvsdevops.co.uk
